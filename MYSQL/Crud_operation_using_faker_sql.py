@@ -231,3 +231,25 @@ def update_faker():
     currentcursor.close()
     connection.close()
 
+
+def delete():
+
+    connection = connect_database()
+    currentcursor = connection.cursor()
+    emp_id = int(input("Enter Employee ID: "))
+
+    currentcursor.execute("SELECT * FROM fakeremployee WHERE id = %s",(emp_id,))
+
+    result = currentcursor.fetchone()
+
+    print(result)
+    # for employee in result:
+    #     id, name, department, salary, city, email = employee
+    #     print(f"{id}\t{name}\t\t{department}\t\t{salary}\t{city}\t{email}")
+
+
+    currentcursor.close()
+    connection.close()
+
+
+delete()
